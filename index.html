@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel-Tip</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header class="flex space-around align-items-center">
+        <h1>Travel Tip</h1>
+        <div class="header-btns-container flex space-around">
+            <div class="enter-location-container flex space-around">
+                <input type="text" placeholder="Enter location">
+                <button class="go-btn">Go</button>
+                <button class="my-location-btn">My location</button>
+
+            </div>
+        </div>
+    </header>
+    <section class="app-section flex">
+        <div id="map" style="width: 70%; height: 400px;"></div>
+        <div class="location-details flex flex-dir-col align-items-center">
+            <div class="curr-location"></div>
+            <div class="curr-weather-container flex flex-dir-col">
+                <h1 class="loc-name-weather"></h1>
+                <div class="curr-temp"></div>
+                <div class="curr-temp-range"></div>
+                <img src="" alt="" class="weather-icon">
+                <div class="weather-description"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script>function initMap() { }</script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACUNum2hdJt0mMdo4Jn3d7c_4hjUmXv74&callback=initMap"></script>
+
+</body>
+
+</html>

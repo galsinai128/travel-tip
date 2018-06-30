@@ -1,0 +1,134 @@
+/* --- list ---*/
+
+.clean-list {
+    /*give this class for the ul*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- flex ---*/
+
+.flex {
+    display: flex;
+}
+
+.flex-dir-col {
+    flex-direction: column;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-right {
+    justify-content: right;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/************************************************END-HELPERS**********************************/
+body{
+    background-color: rgb(170, 218, 255);
+}
+
+header{
+    font-size: 20px;
+    color: rgb(30, 124, 27);
+}
+
+button{
+    width: 70px;
+    height: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.829);
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+button:hover{
+    background-color: rgba(0, 0, 0, 0.568);
+}
+
+input{
+    width: 250px;
+    height: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.829);
+    border: none;
+    margin: 0.5rem;
+    padding-left: 1rem;
+}
+
+.header-btns-container{
+    width: 70%;
+}
+
+.location-details{
+    background-color: rgb(75, 150, 243);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    width: 30%; 
+    height: 400px;
+}
+
+#map{
+    width: 70%; 
+    height: 400px;
+}
+
+.curr-temp{
+    font-size: 40px;
+}
+
+.curr-temp-range, .weather-description{
+    font-size: 14px;
+}
+
+.weather-icon{
+    width: 100px;
+    height: 100px;
+}
+
+
+@media (max-width : 768px){
+    .app-section{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .location-details{
+        width: 70%;
+        height: 100%;
+    }
+
+    header{
+        flex-direction: column;
+    }
+
+
+}
+
+@media (max-width : 480px){
+    button, input {
+        margin: 0;
+    }
+    input{
+        width: 70%;
+    }
+}
