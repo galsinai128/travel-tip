@@ -18,7 +18,7 @@ function getLocs() {
 function setLocs(coords){
     locs = [coords];
     console.log('locs',locs);
-    urlForCopy = `${window.location.href} ?lat=${locs.lat}&lng=${locs.lng}`; 
+    urlForCopy = `${window.location.href} ?lat=${coords.lat}&lng=${coords.lng}`; 
     console.log(urlForCopy);
 }
 
