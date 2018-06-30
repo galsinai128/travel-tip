@@ -16,7 +16,7 @@ function renderWeather(weather){
     elWeather = document.querySelector('.weather-description');
     elWeather.innerText = weather.weather[0].description;
     var iconCode = weather.weather[0].icon;
-    var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    var iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
     elWeather = document.querySelector('.weather-icon');
     elWeather.src = iconUrl;
 }
