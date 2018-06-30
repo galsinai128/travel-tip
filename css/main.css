@@ -128,10 +128,16 @@ input{
     input{
         width: 80%;
         padding-left: 0.5rem;
+        margin-right: 1rem;
     }
 }
 
 @media (max-width : 480px){
 
-
+    .enter-location-container{
+        flex-direction: column;
+    }
+    input{
+        width: 96%;
+    }
 }

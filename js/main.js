@@ -5,38 +5,44 @@ import mapService from './services/map.service.js'
 import weatherService from './services/weather.service.js'
 
 
-
 locService.getLocs()
-    .then(locs => console.log('locs', locs))
+    .then(locs => {
+        console.log('locs', locs)
+    })
 
 window.onload = () => {
     mapService.initMap()
         .then(
             () => {
-                locService.getPosition()
-                    .then(pos => {
-                        var coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-                        mapService.addMarker(coords);
-                        locService.setLocs(coords);
-                        weatherService.getWeatherFromApi(coords)
-                            .then(weather => {
-                                weatherService.renderWeather(weather.data)
-                            })
-                    })
-                    .catch(err => {
-                        console.log('err!!!', err);
-                    })
+                if (!window.location.href.includes('?')){
+                    locService.getPosition()
+                        .then(pos => {
+                            var coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+                            mapService.addMarker(coords);
+                            locService.setLocs(coords);
+                            weatherService.getWeatherFromApi(coords)
+                                .then(weather => {
+                                    weatherService.renderWeather(weather.data)
+                                })
+                        })
+                        .catch(err => {
+                            console.log('err!!!', err);
+                        })
+                }
+                else{
+                    var coords = {lat : +getParameterByName('lat'), lng : +getParameterByName('lng')}
+                    console.log('coords',coords);
+                    mapService.addMarker(coords);
+                    locService.setLocs(coords);
+                    weatherService.getWeatherFromApi(coords)
+                        .then(weather => {
+                            weatherService.renderWeather(weather.data)
+                        })
+                }
             }
         ).catch(console.warn);
-
-
-
-
 }
 
-// document.querySelector('.btn1').onclick =  () => {
-//     console.log('Thanks!');
-// }
 
 
 document.querySelector('.go-btn').addEventListener('click', (ev) => {
@@ -70,6 +76,13 @@ document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
         })
 })
 
+document.querySelector('.copy-location-btn').addEventListener('click', (ev) => {
+    copyToClipboard(locService.getUrlForCopy());
+    var elCopyBtn = ev.target;
+    elCopyBtn.innerText = 'Adress copied';
+    setTimeout(()=>{elCopyBtn.innerText = 'Copy location'},1000)
+})
+
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -81,3 +94,14 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+
+function copyToClipboard (str)  {
+    console.log('str',str);
+    let el = document.createElement('textarea');
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
