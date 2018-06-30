@@ -1,5 +1,6 @@
-var locs = [{lat: 11.22, lng: 22.11}]
+var locs = [{lat: 11.22, lng: 22.11}];
 const MAP_API_KEY = 'AIzaSyACUNum2hdJt0mMdo4Jn3d7c_4hjUmXv74';
+var urlForCopy = '';
 
 function getLocs1() {
     return Promise.resolve(locs);
@@ -12,6 +13,13 @@ function getLocs() {
         }, 2000)
     });
 
+}
+
+function setLocs(coords){
+    locs = [coords];
+    console.log('locs',locs);
+    urlForCopy = window.location.href; 
+    console.log(urlForCopy);
 }
 
 function getCoordsFromGoogle(locStr) {
@@ -38,5 +46,6 @@ function getPosition() {
 export default {
     getLocs :getLocs,
     getPosition: getPosition,
-    getCoordsFromGoogle: getCoordsFromGoogle
+    getCoordsFromGoogle: getCoordsFromGoogle,
+    setLocs: setLocs
 }
